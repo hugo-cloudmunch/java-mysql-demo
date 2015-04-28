@@ -5,58 +5,124 @@ import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.Date;
 
+/**
+ * LogMessage.
+ */
 @DatabaseTable(tableName = "LogMessage")
 public class LogMessage {
+    /**
+     * id.
+     */
     @DatabaseField(generatedId = true)
     private int id;
+
+    /**
+     * level.
+     */
     @DatabaseField(columnName = "level")
     private String level;
-    @DatabaseField(columnName="message")
+
+    /**
+     * message.
+     */
+    @DatabaseField(columnName = "message")
     private String message;
+
+    /**
+     * appName.
+     */
     @DatabaseField(columnName = "appName")
     private String appName;
+
+    /**
+     * timestamp.
+     */
     @DatabaseField(columnName = "timestamp", canBeNull = true)
     private Date timestamp;
 
-    public LogMessage(){}
+    /**
+     * LogMessage.
+     */
+    public LogMessage() {
+    }
 
-    public int getId() {
+    /**
+     * getId.
+     * @return int
+     */
+    public final int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    /**
+     * setId.
+     * @param msgID message Id
+     */
+    public final void setId(final int msgID) {
+        this.id = msgID;
     }
 
-    public String getLevel() {
+    /**
+     * getLevel.
+     * @return String
+     */
+    public final String getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    /**
+     * setLevel.
+     * @param msgLevel message level
+     */
+    public final void setLevel(final String msgLevel) {
+        this.level = msgLevel;
     }
 
-    public String getMessage() {
+    /**
+     * getMessage.
+     * @return String
+     */
+    public final String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    /**
+     * setMessage.
+     * @param msgText message Text
+     */
+    public final void setMessage(final String msgText) {
+        this.message = msgText;
     }
 
-    public String getAppName() {
+    /**
+     * getAppName.
+     * @return String
+     */
+    public final String getAppName() {
         return appName;
     }
 
-    public void setAppName(String appName) {
-        this.appName = appName;
+    /**
+     * setAppName.
+     * @param msgAppName Message App Name
+     */
+    public final void setAppName(final String msgAppName) {
+        this.appName = msgAppName;
     }
 
-    public Date getTimestamp() {
+    /**
+     * getTimestamp.
+     * @return Date
+     */
+    public final Date getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    /**
+     * setTimestamp.
+     * @param msgTimeStamp message timestamp
+     */
+    public final void setTimestamp(final Date msgTimeStamp) {
+        this.timestamp = msgTimeStamp;
     }
 }

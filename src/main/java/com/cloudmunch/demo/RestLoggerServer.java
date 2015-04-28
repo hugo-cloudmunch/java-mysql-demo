@@ -1,10 +1,15 @@
+/*
+* Cloudmunch Java MySQL Demo App
+* */
+
 package com.cloudmunch.demo;
 
 import java.sql.SQLException;
 
-import static spark.Spark.*;
+import static spark.Spark.get;
+import static spark.Spark.put;
 
-public class App {
+public class RestLoggerServer {
 
     public static void main(String[] args) throws SQLException {
         System.setProperty("norm.dataSourceClassName", "com.mysql.jdbc.jdbc2.optional.MysqlDataSource");

@@ -1,35 +1,71 @@
 package com.cloudmunch.demo;
 
 import com.google.gson.Gson;
+
 import java.sql.SQLException;
 
+/**
+ * RestLogger.
+ */
 public class RestLogger {
-	private static final Gson gson = new Gson();
+    /**
+     * gson.
+     */
+    private final Gson gson = new Gson();
+
+    /**
+     * dataAccess.
+     */
     private static IDataAccess dataAccess;
 
+    /**
+     * RestLogger.
+     * @throws SQLException an exception
+     */
     public RestLogger() throws SQLException {
         dataAccess = new DataAccess();
     }
 
-    public RestLogger(IDataAccess dataAccess){
-        this.dataAccess = dataAccess;
+    /**
+     * RestLogger.
+     * @param loggerDataAccess dataAccess.
+     */
+    public RestLogger(final IDataAccess loggerDataAccess) {
+        this.dataAccess = loggerDataAccess;
     }
 
-	public String echo(String param){
-		return param;
-	}
+    /**
+     * echo.
+     * @param param The param
+     * @return what you sent
+     */
+    public final String echo(final String param) {
+        return param;
+    }
 
-	public boolean info(String jsonMsg) throws SQLException {
-		LogMessage message = gson.fromJson(jsonMsg, LogMessage.class);
+    /**
+     * info.
+     * @param jsonMsg The message
+     * @return True if OK
+     * @throws SQLException an exception
+     */
+    public final boolean info(final String jsonMsg) throws SQLException {
+        LogMessage message = gson.fromJson(jsonMsg, LogMessage.class);
 
         message.setLevel(LogLevels.INFO.toString());
 
         dataAccess.insertLogMessage(message);
 
         return true;
-	}
+    }
 
-	public boolean warn(String jsonMsg) throws SQLException {
+    /**
+     * warn.
+     * @param jsonMsg the message
+     * @return True if OK
+     * @throws SQLException an exception
+     */
+    public final  boolean warn(final String jsonMsg) throws SQLException {
         LogMessage message = gson.fromJson(jsonMsg, LogMessage.class);
 
         message.setLevel(LogLevels.WARN.toString());
@@ -37,9 +73,15 @@ public class RestLogger {
         dataAccess.insertLogMessage(message);
 
         return true;
-	}
+    }
 
-	public boolean error(String jsonMsg) throws SQLException {
+    /**
+     * error.
+     * @param jsonMsg the message
+     * @return True if OK
+     * @throws SQLException an exception
+     */
+    public final boolean error(final String jsonMsg) throws SQLException {
         LogMessage message = gson.fromJson(jsonMsg, LogMessage.class);
 
         message.setLevel(LogLevels.ERROR.toString());
@@ -48,9 +90,16 @@ public class RestLogger {
 
         dataAccess.insertLogMessage(message);
 
-        return true;}
+        return true;
+    }
 
-	public boolean fatal(String jsonMsg) throws SQLException {
+    /**
+     * fatal.
+     * @param jsonMsg the message
+     * @return True if OK
+     * @throws SQLException an exception
+     */
+    public final boolean fatal(final String jsonMsg) throws SQLException {
         LogMessage message = gson.fromJson(jsonMsg, LogMessage.class);
 
         message.setLevel(LogLevels.FATAL.toString());
@@ -59,5 +108,6 @@ public class RestLogger {
 
         dataAccess.insertLogMessage(message);
 
-        return true;}
+        return true;
+    }
 }
